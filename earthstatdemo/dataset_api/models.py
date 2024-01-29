@@ -4,6 +4,9 @@ from django.db import models
 class Dataset(models.Model):
     title = models.CharField(max_length=500)
 
+    def __str__(self):
+        return self.title
+
 
 class GeoDatum(models.Model):
     dataset = models.ForeignKey(Dataset, on_delete=models.CASCADE)
@@ -12,3 +15,6 @@ class GeoDatum(models.Model):
     lat = models.DecimalField(max_digits=8, decimal_places=6)
     height = models.DecimalField(max_digits=10, decimal_places=6)
     datum = models.DecimalField(max_digits=15, decimal_places=6)
+
+    def __str__(self):
+        return f'({self.lat}, {self.lng})'
