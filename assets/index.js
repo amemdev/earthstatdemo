@@ -1,10 +1,17 @@
-import React from "react";
-import { createRoot } from "react-dom/client";
+window.CESIUM_BASE_URL = "/static/cesiumStatic";
 
-const root = createRoot(document.getElementById("root"));
+import {
+  Cartesian3,
+  createOsmBuildingsAsync,
+  Ion,
+  Math as CesiumMath,
+  Terrain,
+  Viewer,
+} from "cesium";
+import "cesium/Build/Cesium/Widgets/widgets.css";
 
-root.render(
-  <React.StrictMode>
-    <h1>app</h1>
-  </React.StrictMode>
-);
+Ion.defaultAccessToken = process.env.CESIUM_ACCESS_TOKEN;
+
+const viewer = new Viewer("cesiumContainer", {
+  terrain: Terrain.fromWorldTerrain(),
+});
