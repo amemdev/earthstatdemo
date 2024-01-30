@@ -4,10 +4,12 @@ export default function DatumTable({ data, onRowSelect }) {
   return (
     <>
       <h4>Data</h4>
+      Click row to navigate to point
       <table className="table table-sm table-striped table-hover">
         <thead>
           <tr>
             <th>Label</th>
+            <th>Date</th>
             <th>Lat</th>
             <th>Lng</th>
             <th>Height</th>
@@ -23,6 +25,7 @@ export default function DatumTable({ data, onRowSelect }) {
               }}
             >
               <td>{row.label}</td>
+              <td>{row.date}</td>
               <td>{row.lat}</td>
               <td>{row.lng}</td>
               <td>{row.height}</td>

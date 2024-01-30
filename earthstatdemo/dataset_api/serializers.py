@@ -24,4 +24,5 @@ class GeoDatumSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = GeoDatum
-        fields = ['id', 'dataset', 'label', 'lat', 'lng', 'height', 'data']
+        fields = ['id', 'dataset', 'label',
+                  'date', 'lat', 'lng', 'height', 'data']

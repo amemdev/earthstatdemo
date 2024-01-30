@@ -18,4 +18,4 @@ class GeoDatumViewSet(viewsets.ModelViewSet):
     queryset = GeoDatum.objects.all()
     serializer_class = GeoDatumSerializer
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['dataset']
+    filterset_fields = ['dataset', 'date']

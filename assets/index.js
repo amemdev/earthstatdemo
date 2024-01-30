@@ -26,7 +26,11 @@ const viewer = new Viewer("cesiumContainer", {
 
 window.cesiumGotoPoint = (lng, lat, height) => {
   viewer.camera.flyTo({
-    destination: Cartesian3.fromDegrees(lng, lat, DEFAULT_FLY_HEIGHT),
+    destination: Cartesian3.fromDegrees(
+      parseFloat(lng),
+      parseFloat(lat),
+      DEFAULT_FLY_HEIGHT
+    ),
   });
 };
 
@@ -34,7 +38,7 @@ window.clearPoints = () => {
   viewer.entities.removeAll();
 };
 
-window.markPoints = (points, scale, { title, datatype }) => {
+window.markPoints = (points, scale, { title, datatype = "float" }) => {
   let maxValue = null;
   let minValue = null;
   const datatypeFuncs = {
@@ -43,7 +47,7 @@ window.markPoints = (points, scale, { title, datatype }) => {
 
   points.forEach((point) => {
     if (!point["data"].hasOwnProperty(title)) {
-      return;
+      title = Object.keys(point["data"])[0];
     }
 
     const value = datatypeFuncs[datatype](point["data"][title]);
@@ -59,7 +63,7 @@ window.markPoints = (points, scale, { title, datatype }) => {
 
   points.map((point) => {
     if (!point["data"].hasOwnProperty(title)) {
-      return;
+      title = Object.keys(point["data"])[0];
     }
 
     const value = datatypeFuncs[datatype](point["data"][title]);

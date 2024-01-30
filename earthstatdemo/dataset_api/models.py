@@ -21,6 +21,7 @@ class DatasetField(models.Model):
 class GeoDatum(models.Model):
     dataset = models.ForeignKey(Dataset, on_delete=models.CASCADE)
     label = models.CharField(max_length=500, blank=True)
+    date = models.DateField(blank=True)
     lng = models.DecimalField(max_digits=9, decimal_places=6)
     lat = models.DecimalField(max_digits=8, decimal_places=6)
     height = models.DecimalField(max_digits=10, decimal_places=6)
