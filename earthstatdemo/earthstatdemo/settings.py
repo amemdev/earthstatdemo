@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'dataset_api.apps.DatasetApiConfig',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
