@@ -52,10 +52,14 @@ window.markPoints = (points, scale) => {
 
   points.map((point) => {
     const value = parseFloat(point.datum);
-    const percent = (value - minValue) / (maxValue - minValue);
+    let percent = 1;
+
+    if (maxValue - minValue > 0) {
+      percent = (value - minValue) / (maxValue - minValue);
+    }
 
     viewer.entities.add({
-      name: "Green cylinder with black outline",
+      name: point.label,
       position: Cartesian3.fromDegrees(
         parseFloat(point.lng),
         parseFloat(point.lat),
