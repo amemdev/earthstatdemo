@@ -22,6 +22,10 @@ const MARKER_CYLINDER_READIUS = 10000;
 
 const viewer = new Viewer("cesiumContainer", {
   terrain: Terrain.fromWorldTerrain(),
+  timeline: false,
+  homeButton: false,
+  navigationHelpButton: false,
+  fullscreenButton: false,
 });
 
 window.cesiumGotoPoint = (lng, lat, height) => {
