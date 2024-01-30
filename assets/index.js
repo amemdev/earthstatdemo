@@ -34,12 +34,19 @@ window.clearPoints = () => {
   viewer.entities.removeAll();
 };
 
-window.markPoints = (points, scale) => {
+window.markPoints = (points, scale, { title, datatype }) => {
   let maxValue = null;
   let minValue = null;
+  const datatypeFuncs = {
+    float: (value) => parseFloat(value),
+  };
 
   points.forEach((point) => {
-    const value = parseFloat(point.datum);
+    if (!point["data"].hasOwnProperty(title)) {
+      return;
+    }
+
+    const value = datatypeFuncs[datatype](point["data"][title]);
 
     if (maxValue === null || value >= maxValue) {
       maxValue = value;
@@ -51,7 +58,11 @@ window.markPoints = (points, scale) => {
   });
 
   points.map((point) => {
-    const value = parseFloat(point.datum);
+    if (!point["data"].hasOwnProperty(title)) {
+      return;
+    }
+
+    const value = datatypeFuncs[datatype](point["data"][title]);
     let percent = 1;
 
     if (maxValue - minValue > 0) {

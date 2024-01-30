@@ -4,7 +4,6 @@ export default function DatumTable({ data, onRowSelect }) {
   return (
     <>
       <h4>Data</h4>
-
       <table className="table table-sm table-striped table-hover">
         <thead>
           <tr>
@@ -12,7 +11,7 @@ export default function DatumTable({ data, onRowSelect }) {
             <th>Lat</th>
             <th>Lng</th>
             <th>Height</th>
-            <th>Value</th>
+            <th>Data</th>
           </tr>
         </thead>
         <tbody>
@@ -27,7 +26,7 @@ export default function DatumTable({ data, onRowSelect }) {
               <td>{row.lat}</td>
               <td>{row.lng}</td>
               <td>{row.height}</td>
-              <td>{row.datum}</td>
+              <td>{JSON.stringify(row.data)}</td>
             </tr>
           ))}
         </tbody>

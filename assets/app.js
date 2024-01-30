@@ -6,7 +6,7 @@ export default function App() {
   const [datasets, setDatasets] = useState([]);
   const [selectedDatasetId, setSelectedDatasetId] = useState("");
   const [currentData, setCurrentData] = useState([]);
-
+  const [selectedField, setSelectedField] = useState({ id: "" });
   /**
    * Load init data
    */
@@ -35,13 +35,22 @@ export default function App() {
       <DatasetPanel
         datasets={datasets}
         selectedDatasetId={selectedDatasetId}
+        selectedFieldId={selectedField.id}
+        onFieldChange={(field) => {
+          setSelectedField(field);
+          clearPoints();
+          markPoints(currentData, 1000, field);
+        }}
         onDatasetChange={(datasetId) => {
-          loadData(datasetId).then((data) => {
-            setCurrentData(data);
-            clearPoints();
-            markPoints(data, 1000);
-            setSelectedDatasetId(datasetId);
-          });
+          if (datasetId) {
+            loadData(datasetId).then((data) => {
+              setCurrentData(data);
+              setSelectedDatasetId(datasetId);
+            });
+          } else {
+            setCurrentData([]);
+            setSelectedDatasetId("");
+          }
         }}
       />
       <DatumTable
