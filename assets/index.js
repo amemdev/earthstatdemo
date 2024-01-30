@@ -30,8 +30,4 @@ import App from "./app.js";
 
 const root = createRoot(document.getElementById("reactApp"));
 
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+root.render(<App />);

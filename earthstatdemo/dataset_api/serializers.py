@@ -5,7 +5,7 @@ from rest_framework import serializers
 class DatasetSerializer(serializers.ModelSerializer):
     class Meta:
         model = Dataset
-        fields = ['title']
+        fields = ['id', 'title']
 
 
 class GeoDatumSerializer(serializers.ModelSerializer):
